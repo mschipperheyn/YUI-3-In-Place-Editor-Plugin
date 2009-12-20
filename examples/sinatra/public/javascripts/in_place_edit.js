@@ -181,17 +181,6 @@ YUI.add('ipe', function(Y){
     },
     
     /**
-    * @attribute hoverClassName
-    * @description Class to be added when the mouse is over the host
-    * @type String
-    */
-    hoverClassName: {
-            
-      validator: Y.Lang.isString 
-      
-    },
-    
-    /**
     * @attribute paramName
     * @description Name of param that is sent to the server.
     * @type String

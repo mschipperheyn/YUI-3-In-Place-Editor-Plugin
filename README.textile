@@ -1,0 +1,73 @@
+h1. YUI 3 In Place Editor Plugin 
+
+An in place editor "YUI 3":http://developer.yahoo.com/yui/3/ "node":http://developer.yahoo.com/yui/3/node/ "plugin":http://developer.yahoo.com/yui/3/plugin/ based on the excellent (and now maybe classic(?)) "script.aculo.us module":http://wiki.github.com/madrobby/scriptaculous/ajax-inplaceeditor.
+
+h2. Goals
+
+# Awesomeness
+# Reliability
+# Cruciality
+# Make YUI 3 _seem_ friendlier to developers used to Ruby/Rails/JQuery/Disney magic
+
+h2. How do I use this?
+
+Theres an example "Sinatra":http://www.sinatrarb.com/ application included. 
+Crank it up, go to http://localhost:4567/in_place_edit.html and give it a shot.
+
+h3. OR JUST CHECK THIS OUT
+
+bc.. // Check out the YUI 3 Docs if this looks weird.
+YUI({
+    modules:{
+      ipe: {
+        name: 'ipe',
+        type: 'js',
+        // The full path to the IPE file...
+        fullpath: 'http://localhost:4567/javascripts/in_place_edit.js',
+        requires: ['plugin', 'io-base', 'io-form']
+      }      
+    },
+    
+    filter: 'debug'
+  }).use("node", "ipe", function(Y){
+    
+  var edit_1 = Y.one("#my_element_i_want_to_edit_in_place");
+    
+  //          ********The IPE*******  *****A Configuration Object*******
+  edit_1.plug(Y.Plugin.InPlaceEditor, {url:"http://localhost:4567/test"});
+  
+  // That's it. Really. 
+        
+});
+
+h2. Boring (or not) configuration options:
+
+* autoRows: Rows if we happen to make a textarea tag. Defaults to 3.
+* callbacks: Callbacks fired from time to time. onSuccess, onFailure, mouseover, mouseout, etc
+* cancelControl: Type of cancel control to create. Must be 'button' or 'link'. Defaults to 'button'.
+* cancelControlText: Text for cancel control. Defaults to 'cancel'.
+* clickToEditText: Text set to host's title attribute. Defaults to 'Click to edit'
+* cols: cols attr for generated input. Defaults to 0.
+* editorClassName: Class name for generated input, defaults to 'editor_field'
+* formClassName: Class attribute for the generated form
+* formId: ID attribute for the generated form
+* highlightColor: Color to set host's background color to on hover. Defaults to #FFFF99.
+* hoverClassName: Class name added to host on hover
+* paramName: Name of param that is sent to the server. Defaults to 'value'.
+* rows: Rows attribute of generated field. Defaults to 1
+* saveControl: Type of save control to create. Must be 'button' or 'link'. Defaults to 'button'
+* saveControlText: Text for save control. Defaults to 'Save'
+* savingClassName: Class name applied to element whilst saving. Defaults to 'editor-saving'
+* savingText: Text inserted into element whilst saving. Defaults to 'saving...'
+* size: Size attribute of generated field. Defaults to 0
+* textAfterControls: Text after cancel control.
+* textBeforeControls: Text before the save control.
+* textBetweenControls: Text between Save and Cancel controls. Defaults to '&nbsp;OR&nbsp;'
+* url: URL to make request via YUI.IO
+* ioOptions: Configuration object for The YUI.IO instance. Merges with the default.
+
+
+
+
+
+
