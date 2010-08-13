@@ -598,7 +598,8 @@ YUI.add('ipe', function(Y){
     * @description Default success callback
     */
     _onSuccess: function(ioId, response){
-      this.get('host').setContent(response.responseText);
+      var text = response.responseText.replace('<', '&lt;').replace('>', '&gt;');
+      this.get('host').setContent(text);
       this.wrapUp();
       this._fireCallback('onSuccess');
     },
@@ -675,12 +676,12 @@ YUI.add('ipe', function(Y){
         this.enterEditMode();
       });
       
-      this.doAfter("mouseover", function(){
+      this.doAfter("mouseenter", function(){
         this.get('host').addClass(this.get('hoverClassName'));
         this.get('callbacks').mouseover(this);
       });
      
-      this.doAfter("mouseout", function(){
+      this.doAfter("mouseleave", function(){
         this.get('host').removeClass(this.get('hoverClassName'));
         this.get('callbacks').mouseout(this);
       });
@@ -693,9 +694,9 @@ YUI.add('ipe', function(Y){
   Y.namespace("Plugin");
   
   // Set Y.Plugin.InPlaceEditor to the InPlaceEditorPlugin
-  Y.Plugin.InPlaceEditor = InPlaceEditorPlugin
+  Y.Plugin.InPlaceEditor = InPlaceEditorPlugin;
   
-}, '0.0.1' ,{requires:['plugin', 'io-base', 'io-form'], skinnable:false})
+}, '0.0.1' ,{requires:['plugin', 'io-base', 'io-form', 'event-mouseenter'], skinnable:false})
   
 
   

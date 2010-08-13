@@ -1,4 +1,24 @@
+/*
+Copyright (c) 2010 Elliot Laster
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
 YUI.add('ipe', function(Y){
   
   // A plugin class designed to create Flickr style in place editing.
@@ -178,6 +198,17 @@ YUI.add('ipe', function(Y){
       
       validator: Y.Lang.isString
     
+    },
+    
+    /**
+    * @attribute hoverClassName
+    * @description Class to be added when the mouse is over the host
+    * @type String
+    */
+    hoverClassName: {
+            
+      validator: Y.Lang.isString 
+      
     },
     
     /**
@@ -365,8 +396,8 @@ YUI.add('ipe', function(Y){
       
       // Give the host an ID if it doesn't have one already
       if (!host.get('id')) {
-        id = Y.stamp(host);
-        host.set('id', id);
+        id = Y.stamp(host)
+        host.set('id', id)
       }
       
       // Set the host's title to the clickToEditText attr
@@ -489,7 +520,7 @@ YUI.add('ipe', function(Y){
       var host = this.get('host');
       
       if (this._saving || this._editing){
-        return
+        return;
       }
       
       this._editing = true;
@@ -523,7 +554,7 @@ YUI.add('ipe', function(Y){
     
     /**
     * @method leaveEditMode
-    * @description existe editing mode
+    * @description exits editing mode
     */
     leaveEditMode: function(){
       var host = this.get('host');
@@ -567,7 +598,8 @@ YUI.add('ipe', function(Y){
     * @description Default success callback
     */
     _onSuccess: function(ioId, response){
-      this.get('host').setContent(response.responseText);
+      var text = response.responseText.replace('<', '&lt;').replace('>', '&gt;');
+      this.get('host').setContent(text);
       this.wrapUp();
       this._fireCallback('onSuccess');
     },
@@ -644,12 +676,12 @@ YUI.add('ipe', function(Y){
         this.enterEditMode();
       });
       
-      this.doAfter("mouseover", function(){
+      this.doAfter("mouseenter", function(){
         this.get('host').addClass(this.get('hoverClassName'));
         this.get('callbacks').mouseover(this);
       });
      
-      this.doAfter("mouseout", function(){
+      this.doAfter("mouseleave", function(){
         this.get('host').removeClass(this.get('hoverClassName'));
         this.get('callbacks').mouseout(this);
       });
@@ -662,9 +694,9 @@ YUI.add('ipe', function(Y){
   Y.namespace("Plugin");
   
   // Set Y.Plugin.InPlaceEditor to the InPlaceEditorPlugin
-  Y.Plugin.InPlaceEditor = InPlaceEditorPlugin
+  Y.Plugin.InPlaceEditor = InPlaceEditorPlugin;
   
-}, '0.0.1' ,{requires:['plugin', 'io-base', 'io-form'], skinnable:false})
+}, '0.0.1' ,{requires:['plugin', 'io-base', 'io-form', 'event-mouseenter'], skinnable:false})
   
 
   

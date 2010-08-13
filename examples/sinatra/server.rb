@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra'
 
 post '/test/?' do
+  sleep 1
   value = params[:value]
   if !(value.nil?) && !(value == "")
     value
