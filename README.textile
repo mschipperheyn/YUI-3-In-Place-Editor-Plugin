@@ -7,16 +7,16 @@ h2. Goals
 # Awesomeness
 # Reliability
 # Cruciality
-# Make YUI 3 _seem_ friendlier to developers used to Ruby/Rails/JQuery/Disney magic
+# Make YUI 3 _seem_ friendlier to developers used to other JS frameworks
 
 h2. How do I use this?
 
 Theres an example "Sinatra":http://www.sinatrarb.com/ application included. 
 Crank it up, go to http://localhost:4567/in_place_edit.html and give it a shot.
 
-h3. OR JUST CHECK THIS OUT
+h3. 
 
-bc.. // Check out the YUI 3 Docs if this looks weird.
+bc.. // Check out the YUI 3 Docs if this looks strange.
 YUI({
     modules:{
       ipe: {
@@ -36,11 +36,11 @@ YUI({
   //          ********The IPE*******  *****A Configuration Object*******
   edit_1.plug(Y.Plugin.InPlaceEditor, {url:"http://localhost:4567/test"});
   
-  // That's it. Really. 
+  // That's it! 
         
 });
 
-h2. Boring (or not) configuration options:
+h2. Cconfiguration options:
 
 * autoRows: Rows if we happen to make a textarea tag. Defaults to 3.
 * callbacks: Callbacks fired from time to time. onSuccess, onFailure, mouseover, mouseout, etc

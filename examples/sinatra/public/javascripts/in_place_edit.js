@@ -365,8 +365,8 @@ YUI.add('ipe', function(Y){
       
       // Give the host an ID if it doesn't have one already
       if (!host.get('id')) {
-        id = Y.stamp(host)
-        host.set('id', id)
+        id = Y.stamp(host);
+        host.set('id', id);
       }
       
       // Set the host's title to the clickToEditText attr
@@ -489,7 +489,7 @@ YUI.add('ipe', function(Y){
       var host = this.get('host');
       
       if (this._saving || this._editing){
-        return;
+        return
       }
       
       this._editing = true;
