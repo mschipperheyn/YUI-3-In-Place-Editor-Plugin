@@ -554,7 +554,7 @@ YUI.add('ipe', function(Y){
     
     /**
     * @method leaveEditMode
-    * @description existe editing mode
+    * @description exits editing mode
     */
     leaveEditMode: function(){
       var host = this.get('host');
