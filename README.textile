@@ -2,13 +2,6 @@ h1. YUI 3 In Place Editor Plugin
 
 An in place editor "YUI 3":http://developer.yahoo.com/yui/3/ "node":http://developer.yahoo.com/yui/3/node/ "plugin":http://developer.yahoo.com/yui/3/plugin/ based on the excellent (and now maybe classic(?)) "script.aculo.us module":http://wiki.github.com/madrobby/scriptaculous/ajax-inplaceeditor.
 
-h2. Goals
-
-# Awesomeness
-# Reliability
-# Cruciality
-# Make YUI 3 _seem_ friendlier to developers used to other JS frameworks
-
 h2. How do I use this?
 
 Theres an example "Sinatra":http://www.sinatrarb.com/ application included. 
